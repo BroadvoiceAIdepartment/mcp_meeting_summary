@@ -1,0 +1,164 @@
+[
+  {
+    "project": "BAMA",
+    "key": "BAMA-1913",
+    "type": "Bug",
+    "title": "Created contacts do not immediately display the Name on incoming calls",
+    "blurb": "The contact display now updates instantly on incoming calls, ensuring users see caller information without delay.",
+    "action_scope": "Bug",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-1972",
+    "type": "Bug",
+    "title": "Flickering on user caller ID",
+    "blurb": "The caller ID flickering issue has been resolved, providing a clearer and more stable caller identification experience.",
+    "action_scope": "Bug",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-2053",
+    "type": "Bug",
+    "title": "Internal Contact Details Not Updating on Mobile",
+    "blurb": "Internal contact details now update correctly on mobile devices, ensuring users always see the latest contact information.",
+    "action_scope": "",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-1864",
+    "type": "Story",
+    "title": "Implement reactive internal and external contact update handling",
+    "blurb": "The contact update system now reacts instantly to changes, keeping contact information current across the platform.",
+    "action_scope": "Feature improvement",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-2008",
+    "type": "Story",
+    "title": "Display sending status for internal conversations",
+    "blurb": "Users can now see real-time sending status in internal chats, enhancing communication transparency.",
+    "action_scope": "New feature",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "BIMA2",
+    "key": "BIMA2-1301",
+    "type": "Bug",
+    "title": "Audio button incorrectly pre-selected on call initiation",
+    "blurb": "The audio button now defaults correctly during call start, preventing user confusion and streamlining call setup.",
+    "action_scope": "Bug",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "BIMA2",
+    "key": "BIMA2-1319",
+    "type": "Bug",
+    "title": "System messages unarchive group conversations",
+    "blurb": "Group conversations now unarchive properly when system messages are received, improving message management.",
+    "action_scope": "Bug",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "COMAPI",
+    "key": "COMAPI-1331",
+    "type": "Task",
+    "title": "[Messaging API] Cap conversations limit fetch to 100",
+    "blurb": "The messaging API now limits conversation fetches to 100, optimizing performance and data handling.",
+    "action_scope": "",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-2790",
+    "type": "Bug",
+    "title": "Updated contact name not reflected in message info panel",
+    "blurb": "Updated contact names now appear correctly in message info panels, ensuring accurate communication details.",
+    "action_scope": "",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3048",
+    "type": "Bug",
+    "title": "Message input unblocks for adhoc groups, allowing SMS without 10DLC campaign registration",
+    "blurb": "Message input is now unblocked for ad hoc groups, enabling SMS sending without requiring 10DLC campaign registration.",
+    "action_scope": "Bug",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3057",
+    "type": "Bug",
+    "title": "Audio and video Source/Device are not displayed correctly (Chrome & Firefox)",
+    "blurb": "Audio and video source and device displays are now accurate across Chrome and Firefox browsers, improving media setup.",
+    "action_scope": "Bug",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-2961",
+    "type": "Story",
+    "title": "Implement optimistic message sending with status display in internal chats",
+    "blurb": "Messages now send optimistically with real-time status updates, enhancing chat responsiveness and user confidence.",
+    "action_scope": "New feature",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-2965",
+    "type": "Story",
+    "title": "Empty state for new chats via search bar",
+    "blurb": "An empty state view now appears for new chats initiated through search, guiding users smoothly into conversations.",
+    "action_scope": "Feature improvement",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-2977",
+    "type": "Story",
+    "title": "Contact Duplicates 2nd Phase",
+    "blurb": "Duplicate contact management has been enhanced, reducing clutter and improving contact accuracy.",
+    "action_scope": "Feature improvement",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3020",
+    "type": "Story",
+    "title": "Adjust incoming call notification when the user is on a call",
+    "blurb": "Incoming call notifications are now better adjusted when users are already on a call, minimizing disruptions.",
+    "action_scope": "Feature improvement",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3033",
+    "type": "Story",
+    "title": "[Video] Implement Noise Cancellation (Krisp)",
+    "blurb": "Noise cancellation using Krisp is now integrated into video calls, improving audio clarity for users.",
+    "action_scope": "New feature",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3045",
+    "type": "Task",
+    "title": "[Video] Bugsnag integration",
+    "blurb": "Bugsnag error monitoring has been integrated into video features, enabling proactive issue detection and resolution.",
+    "action_scope": "",
+    "fix_version": "25.20"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3047",
+    "type": "Task",
+    "title": "Limit Conversation Polling to 30",
+    "blurb": "Conversation polling frequency has been limited to 30 seconds, balancing real-time updates with system performance.",
+    "action_scope": "",
+    "fix_version": "25.20"
+  }
+]

@@ -1,0 +1,12 @@
+## Communicator {project_display_name} - {fix_version}
+{today}
+
+## Introduction
+
+### Overview  
+    This release includes:
+{overview_lines}
+
+{groups_markdown}
+
+---------------------------------------------------------------

@@ -1,0 +1,4 @@
+- Improved contact and message information accuracy.  
+- Enhanced media setup and device display in browsers.  
+- New real-time messaging and noise cancellation features.  
+- Better call notifications and user guidance for new chats.

@@ -1,0 +1,36 @@
+You are drafting the "Overview" bullet list for the Release Notes.
+
+Context JSON (summarized issues; Internals are excluded):
+{issues_json}
+
+Goal:
+- Produce a short list of high-level, user-facing themes capturing what changed.
+- Cluster issues into 3–5 generic themes by product area or capability.
+- Prefer merged bullets for adjacent areas when appropriate.
+
+Constraints:
+- Return ONLY a Markdown bullet list, one bullet per line, no numbering.
+- At most {max_points} bullets.
+- Each bullet is a short noun phrase (<= 7–10 words), may omit a verb, end with a period.
+- Do NOT include section headers or any commentary.
+- Do NOT include issue keys or codes.
+- Do NOT output bare generic labels like "Bug fixes" or "Enhancements".
+  Only use generic terms when qualified by a concrete area, e.g.:
+  "Bug fixes in webchat.", "Improvements to conversation management.", "Stability improvements for video calls."
+
+Theming guidance:
+- Group issues by product area, capability, or surface (e.g., conversation management, video calls, webchat, notifications).
+- Merge closely related areas into a single bullet when helpful.
+- Avoid metrics, counts, or implementation details; emphasize the area impacted.
+
+Style examples (format only, not content):
+- Enhancement conversation list sorting
+- Bug fix for group conversation archiving
+- Improved conversation list loading after login
+- Bug fix for voicemail sender name display
+- Performance improvements for SMS processing
+- Bug fix for archived conversation participation status
+
+Output:
+Return only the bullet list. No additional text.
+

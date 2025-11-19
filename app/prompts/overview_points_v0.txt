@@ -1,0 +1,27 @@
+You are drafting the "Overview" bullet list for the Release Notes.
+
+Context JSON (summarized issues; Internals are excluded):
+{issues_json}
+
+Goal:
+- Produce a short list of concrete, user-facing bullets capturing key aspects of this release.
+- Focus on improved client experiences, meaningful enhancements, and impactful bug fixes.
+- Be specific; avoid vague language. Prefer action and user value.
+- Do not echo or list category names (e.g., "Bug", "Story", "Task"). Instead, summarize the concrete outcome.
+
+Constraints:
+- Return ONLY a Markdown bullet list, one bullet per line, no numbering.
+- At most {max_points} bullets.
+- Each bullet should be a single sentence (<= 25 words), no trailing punctuation beyond a period.
+- Do NOT include section headers or any commentary.
+- Do NOT include issue keys or codes; summarize the outcome plainly.
+- Do NOT output generic labels like "Bug fixes", "Enhancements", or issuetype names.
+
+Style examples (format only, not content):
+- Reduced message delivery delays during peak usage for enterprise clients.
+- Simplified onboarding flow, cutting setup time for new users.
+- Fixed intermittent crash when attaching large files in conversations.
+
+Output:
+Return only the bullet list. No additional text.
+

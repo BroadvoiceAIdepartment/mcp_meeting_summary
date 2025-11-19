@@ -1,0 +1,6 @@
+# Release Notes
+
+{project_sections}
+
+{internals_section}
+

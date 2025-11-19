@@ -1,0 +1,20 @@
+{
+  "input": "~71202065be6ca6ea4d47de9f384662c2c56079",
+  "resolved": {
+    "spaceOwnerId": "712020:65be6ca6-ea4d-47de-9f38-4662c2c56079",
+    "createdAt": "2025-06-16T14:19:50.626Z",
+    "authorId": "712020:65be6ca6-ea4d-47de-9f38-4662c2c56079",
+    "homepageId": "5590450843",
+    "icon": null,
+    "description": null,
+    "status": "current",
+    "name": "labreu",
+    "key": "~71202065be6ca6ea4d47de9f384662c2c56079",
+    "id": "5590450198",
+    "type": "personal",
+    "_links": {
+      "webui": "/spaces/~71202065be6ca6ea4d47de9f384662c2c56079"
+    },
+    "currentActiveAlias": "~71202065be6ca6ea4d47de9f384662c2c56079"
+  }
+}

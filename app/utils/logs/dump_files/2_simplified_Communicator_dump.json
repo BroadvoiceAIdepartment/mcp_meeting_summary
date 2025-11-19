@@ -1,0 +1,164 @@
+[
+  {
+    "project": "CUU2",
+    "key": "CUU2-3045",
+    "summary": "[Video] Bugsnag integration",
+    "issuetype": "Task",
+    "description": "Goal: Integrate Bugsnag into our video client to capture errors and automatically include environment context and user metadata for easier debugging. #### Requirements 1. Install & Configure Bugsnag - Add Bugsnag dependency to the video client. - Initialize Bugsnag with the correct project API key (configured from k8s-deploy/config.js). - Wrap the root React application with the Bugsnag error boundary. 2. Environment Detection - Ensure Bugsnag events include the correct environment name: - local (running locally on dev machines) - development (shared dev environment) - staging - production - Use existing environment variables/configuration to set this value dynamically. 3. User Metadata - Attach user context to every Bugsnag event: - Person ID — string or UUID identifying the logged-in user. - Account ID — identifier for the user’s account/organization. - Ensure this is updated on login/logout. 4. Testing - Simulate an error (e.g., throw inside a component) and verify in the Bugsnag dashboard that: - The correct environment is reflected. - Person ID and Account ID are reported. https://docs.bugsnag.com/platforms/javascript/react/ https://app.bugsnag.com/broadvoice-3/video-client/overview",
+    "action_scope": "",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-2965",
+    "summary": "Empty state for new chats via search bar",
+    "issuetype": "Story",
+    "description": "## User story As a user, I want to see a clean view when I start a conversation through the search bar, so that I can have a less cluttered interface. ## Context We currently have two methods for starting conversations: one using the search bar and another using a newly added button (https://broadvoice-jira.atlassian.net/browse/CUU2-2776 + https://broadvoice-jira.atlassian.net/browse/CUU2-2895). When starting a conversation through the search bar, if no existing conversation with the selected contact is found, the contact's avatar, name, and phone number are displayed in the main conversation area, positioned above the message input field and send button. However, when creating group conversations with multiple participants, this results in a cluttered view, showcasing one avatar, name, and phone number for each user, which can be visually overwhelming and confusing, as shown in the following image. To enhance the user experience, we aim to synchronize both conversation creation methods, ensuring that the visual presentation and overall experience are cohesive. Implementing an empty state similar to the one used in the new conversation creation method, accessible via the dedicated button for conversations initiated through the search bar, will allow us to remove redundant contact details, such as avatars, names and phone numbers, from the conversation view. This change will result in a cleaner, more consistent, and easier-to-read interface, especially for group conversations. ## Acceptance criteria As is currently | As it should be :check_mark: Functional requirements FR1. Start a new conversation from the header - The user selects one or more contacts in the header's search - If there’s no existing conversation with the selected contact(s), a placeholder image and text are displayed - The conversation header is also displayed when creating a new conversation with a single contact (not in ad-hoc groups) - By sending a message or choosing to create a named group (through the modal), the conversation becomes effective, and the placeholder is replaced by the conversation body FR2. Existing conversation when adding people in the header - The user selects one or more contact in the header's search - If a prior conversation exists, it should be loaded in the main conversation area - If by adding or removing contacts, the conversation is considered new again, the placeholder mentioned in FR1 should be displayed FR3. Existing behavior to keep - Ad-hoc groups can only be created as external-only or internal-only - After selecting an external contact, internal contacts appear disabled - After selecting an internal contact, external contacts and unsaved numbers appear disabled - When more than 1 internal contact is added, the existing buttons to video call (if allowed) or create a named group should be displayed in the header’s search bar - If only 1 internal contact is selected, a button to start a voice call is also displayed 🛠️ Non-functional requirements NFR1. Layout - The position of the placeholder (combination of image and text) is relative to the chat footer with a distance of about 20% the chat area’s height - Note: This position is to be assessed and better defined during development through design follow-ups Assets: https://xd.adobe.com/view/4ba02f1a-8720-4278-ae02-32936d9a4767-1ef3/ ## Other information N/A",
+    "action_scope": "Feature improvement",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-2008",
+    "summary": "Display sending status for internal conversations",
+    "issuetype": "Story",
+    "description": "## User story As a user, I want to see the sending status when I send an internal conversation message, so that I can confirm if the message was successfully sent. ## Context Users do not currently receive immediate feedback on the status of sent messages in internal conversations, including both 1:1 and group conversations. The absence of visual indicators can cause frustration during message failures or delays. A similar feature exists for SMS. This proposal suggests implementing visual indicators for sent messages and offering users the option to resend messages if they fail. ## Acceptance criteria :check_mark: Functional requirements The following requirements apply only to conversations with directory (internal) contacts, either groups or 1:1. FR1. Sending an internal message - As the user hits send on an internal message, immediately display the new message bubble with the status “Sending” - The message input should be cleared - The status “Sending” will prevail until we can guarantee that it was successfully sent, or it returns an error - While in the “Sending” status, the user can’t long-tap to access more options FR2. Successfully sent internal message - Upon confirmation that the message was sent, the “Sending” status is replaced with the status “Sent” - The “Sent” status is only displayed in the latest message successfully sent by the user - It’s now possible to long-tap on a message to access all existing options FR3. Internal message fails to be sent - If the message fails to be sent, the “Sending” status is replaced with the “Failed to send” status, along with the retry option - This “Failed to send” status remains attached to each message that failed to be sent by the user - The user can delete or copy a message with the “Failed to send” status - The options to reply or pin shouldn’t be displayed on a message with the “Failed to send” status - If the latest message in a conversation is the one that failed, the message “Message failed to send” should be displayed as the preview of that conversation on the messages list FR4. Retry sending the message on fail - When the message is in the “Failed to send” status, a retry button is displayed along with it (“Tap to retry”) - When the user taps on this retry option: - The message returns to the bottom of the chat (position of the latest sent message) - The message now displays the “Sending” status, and bears the same limitations as on FR1 - The timestamp updates to correspond with the new attempt - Will follow the success or fail scenarios described in FR2 and FR3 :tools: Non-functional requirements NFR1. Usability and Interface - Each message status bears a different icon, according to the assets provided - Message statuses are displayed under the sent message bubble, aligned to the right of the bubble’s body (excluding the tip affordance) NFR2. Performance - Message status updates as soon as we can get confirmation of its success or failure - The retry flow (getting the message back to the bottom of the chat with the sending status), should occur no later than 300ms after the user taps on the retry option. NFR3. Success measure - Save an event on Google Analytics with the name: “im_message_failed_retry” to count the number of times users tap on the inline error and retry to send. Assets: https://xd.adobe.com/view/055b9887-12de-4215-8d16-59a7c9ac53fb-5008/ ## Other information N/A",
+    "action_scope": "New feature",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-2961",
+    "summary": "Implement optimistic message sending with status display in internal chats",
+    "issuetype": "Story",
+    "description": "## User story As a user, when I send a message in an internal chat, I want to see its status immediately so that I understand whether it was sent successfully and experience a more responsive interface. ## Context Messages currently appear in the conversation only after receiving confirmation from the Messaging API. This can lead to delays, particularly on slow connections, making the system feel unresponsive. Additionally, users often have to retype their messages if they fail to send, which can result in frustration. To enhance user experience, we plan to introduce optimistic message sending on our web/ desktop platform. When a message is sent in an internal conversation (including both 1:1 chats and group conversations) it will be displayed instantly in the conversation with a temporary sending state. This state will then be updated to either a sent state or a failed state (with an option to retry), depending on the response received from the backend. ## Acceptance criteria :check_mark: Functional requirements The following requirements apply only to conversations with directory (internal) contacts, either groups or 1:1. Deleted messages doesn’t show status. FR1. Sending an internal message - As the user hits send on an internal message, immediately display the new message bubble with the status “Sending” - The send message button should no longer display a loading status when a message is being sent (both internal or SMS) - The status “Sending” will prevail until we can guarantee that it was successfully sent, or it returns an error - While in the “Sending” status, the more options button (3-dots) shouldn’t be displayed FR2. Successfully sent internal message - Upon confirmation that it was sent, the “Sending” status is replaced with the status “Sent” - The “Sent” status is only displayed in the latest message successfully sent by the user - The more options button (3-dots) is now displayed when hovering over the message FR3. Internal message fails to be sent - If the message fails to be sent, the “Sending” status is replaced with the “Failed to send” status, along with the retry option - This “Failed to send” status remains attached to each message that failed to be sent by the user - The user can delete a message with the “Failed to send” status - The options to reply, edit, or pin shouldn’t be displayed on the options of a message with the “Failed to send” status FR4. Retry sending the message on fail - When the message is in the “Failed to send” status, a retry button is displayed along with it (“Click to retry”) - When the user taps on this retry option: - The message returns to the bottom of the chat (position of the latest sent message) - The message now displays the “Sending” status, and bears the same limitations as on FR1 - The timestamp updates to correspond with the new attempt - Will follow the success or failure scenarios described in FR2 and FR3 :tools: Non-functional requirements NFR1. Usability and Interface - Each message status bears a different icon, according to the assets provided - Message statuses are displayed under the sent message bubble, aligned to the right of the bubble’s body (excluding the tip affordance) NFR2. Performance - Message status updates as soon as we can get confirmation of its success or failure - The retry flow (getting the message back to the bottom of the chat with the sending status), should occur no later than 300ms after the user taps on the retry option. NFR3. Success measure - Save an event on Google Analytics with the name: “im_message_failed_retry” to count the number of times users tap on the inline error and retry to send. Assets: https://xd.adobe.com/view/da71aee6-211e-4a88-8e62-065579503674-8f22/ ## Other information N/A",
+    "action_scope": "New feature",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3047",
+    "summary": "Limit Conversation Polling to 30",
+    "issuetype": "Task",
+    "description": "Currently, our polling mechanism attempts to poll the same number of conversations that are currently loaded. This becomes problematic when users have more than 100 conversations loaded: - It increases unnecessary network load. - It doesn’t provide additional value since we only care about the latest changes, and the polling request is ordered by latest message. - Messaging API/Scylla will throw when fetching more the 100 conversations at once. To optimize polling, we should restrict the limit to 30 conversations, which aligns with the default load behavior. Acceptance Criteria: - Conversation polling should always use 30 as the limit, regardless of how many are currently loaded. Testing Considerations: - Load fewer than 30 conversations and verify polling handles them correctly. - Load more than 30 (e.g., 100+) and confirm only 30 are polled. - Confirm that polling results still reflect the most recent conversation updates.",
+    "action_scope": "",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3020",
+    "summary": "Adjust incoming call notification when the user is on a call",
+    "issuetype": "Story",
+    "description": "## User story As a user on an active call, I want a brief, non-intrusive audio alert for incoming calls, so that I can be notified without disrupting my conversation. ## Context Users currently experience a poor notification experience during active calls due to competing audio sources. The standard continuous ringtone disrupts ongoing conversations. The goal is to enhance the incoming call notification for users already on a call. ## Acceptance criteria - When a user is on an \"On call\" state (audio or video call) and receives a new audio call: - The incoming call should play the provided audio instead of the standard ringtone. - While ringing, the audio will play in 10-second intervals, until it is answered, declined, or the caller hangs up (e.g. audio plays once, wait 10 seconds, then play again. This pattern is repeated until the call stops ringing). - The user should receive a visual notification of the incoming call (UI popup remains unchanged). - When a user is not in an “On call”, or “Do not disturb” state, the incoming call should use the standard continuous ringtone. - This behavior should remain consistent across desktop and web platforms. Audio file: ## Other information N/A",
+    "action_scope": "Feature improvement",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-2977",
+    "summary": "Contact Duplicates 2nd Phase",
+    "issuetype": "Story",
+    "description": "The 2nd phase of the duplicate contacts management will be developed in a separate feature branch: feature-branch/BCS-483-contactDuplicates2ndPhase. QA should only test stories: - https://broadvoice-jira.atlassian.net/browse/CUU2-2778 - https://broadvoice-jira.atlassian.net/browse/CUU2-2779 - https://broadvoice-jira.atlassian.net/browse/CUU2-2780 - https://broadvoice-jira.atlassian.net/browse/CUU2-2781 - https://broadvoice-jira.atlassian.net/browse/CUU2-2782.",
+    "action_scope": "Feature improvement",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-1864",
+    "summary": "Implement reactive internal and external contact update handling",
+    "issuetype": "Story",
+    "description": "## User story As a user, I want the updates to be reflected in real-time when I edit or delete a contact, so that I have the most current information. ## Context Currently, updates to both internal and external contacts in the B-Hive Portal are not reflected in real-time across the app. Users must manually refresh or navigate to see updates. The backend will be updated to send real-time events when internal contacts are modified and deleted, allowing the frontend to receive updated information immediately. ## Acceptance criteria When a contact is edited, the updates should be immediately reflected, historically and going forward throughout the app, in the following interactions: - Internal contact - Conversation list (recent and unread) - 1:1 conversations (header, messages bubble, system messages, mentions) - Named group conversation (members list, messages bubble, system messages, mentions) - New conversation creation (in the unnamed section) - Call history (recent and missed) - Softphone interface (receiving and making calls, including adding or transferring calls) - Video call history - New video call creation - Voicemail list (unread and all) - Voicemail forward contact list - Contacts list (favorites and contacts, in the unnamed section) - Message notifications (in-app and push) - App call notifications - System call notifications - External contact - Conversation list (recent and unread) - 1:1 conversations (header, messages bubble, system messages, mentions) - Ad-hoc group conversation (header, members list, messages bubble, system messages, mentions) - New conversation creation (in the “Contacts” section) - Call history (recent and missed) - Softphone interface (receiving and making calls, including adding or transferring calls) - Voicemail list (unread and all) - Contacts list (favorites and contacts, in the “Contacts” section) - Message notifications (in-app and push) - App call notifications - System call notifications When a contact is deleted, the updates should be immediately reflected, historically and going forward throughout the app, in the following interactions: - Internal contact - Conversation list (recent and unread) - 1:1 conversations (header, messages bubble, system messages, mentions) - Named group conversation (messages bubble, system messages, mentions) - External contact - Conversation list (recent and unread) - 1:1 conversations (header, messages bubble, system messages, mentions) - Ad-hoc group conversation (header, members list, messages bubble, system messages, mentions) - Call history (recent and missed) - Voicemail list (unread and all) There is an issue reported by a client regarding voicemail sender names. When all users share the same CLID on their SIP accounts, the voicemail displays the name of the first user alphabetically in the location. Since the voicemail system does not have a personId in the endpoints, Android has always relied on the phone number for matching.At the moment, we are simply displaying the information provided by the backend without performing any additional matching. We have already created an investigation ticket to look into the current logic for displaying sender names across all platforms and to determine what changes are needed to correctly display the sender name in voicemails. ## Other information Users are able to easily locate new or existing contacts, through the following options: - Internal contacts - Messages tab (creating a new conversation or adding members to a named group conversation) - Calls tab - On call (transferring or adding calls) - Video tab (creating a new meeting, in the invite users section) - Contacts tab (in via search or scrolling to the contact by name, in the unnamed section) - Voicemail tab - External contacts - Messages tab (creating a 1:1 conversation) - Calls tab - Voicemail tab - Contacts tab (via search or scrolling to the contact by name, in the \"My contacts\" section)",
+    "action_scope": "Feature improvement",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3033",
+    "summary": "[Video] Implement Noise Cancellation (Krisp)",
+    "issuetype": "Story",
+    "description": "Introduce user-selectable noise cancellation in the web video app using Twilio’s Krisp integration. This should reduce background noise for participants without degrading voice quality, and be configurable per user. ### Goals - Provide a toggle/control for noise cancellation in the web client. - Apply Krisp noise suppression during live calls when enabled. - Ensure default behavior aligns with product decision (e.g., on by default unless specified). - Persist user preference within the browser; ### Functional requirements As is today | Introduced in this story FR1. Enable noise cancellation - To the current “Audio settings” a new switch is added “Suppress background noise”, under the microphone settings - This option is on by default - This option is available both on the lobby screen and the ongoing meeting - On unsupported browsers (e.g., Safari/iOS), this option is not be displayed - The noise cancellation preference persists per user across sessions on the same browser FR2. Modal layout updates (lobby and meeting) - The order of the Speakers and Microphone settings has changed - Update the title of this modal to “Audio & video settings” Assets: https://www.figma.com/design/jV2kDALAEEkMvfVty5AUKs/Noise-cancellation-setting?node-id=5-69 ### Expected Outcome - Participants experience noticeably reduced background noise on web. - No significant degradation in voice clarity or latency. - Clear UI affordance indicating current noise cancellation status. ### Acceptance Criteria - Users can enable/disable noise cancellation in-call on supported browsers. - On unsupported browsers (e.g., Safari/iOS), the settings should not display the noise cancellation option. - Setting takes effect without requiring the user to rejoin the call. - Noise cancellation preference should persist per user across sessions on the same browser. - No regression in call setup success rate (test multiple browsers, including Safari), CPU usage within acceptable thresholds for typical hardware, and no significant added latency. - Analytics/telemetry records when noise cancellation is enabled/disabled (Google analytics). https://www.twilio.com/docs/video/noise-cancellation",
+    "action_scope": "New feature",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3057",
+    "summary": "Audio and video Source/Device are not displayed correctly (Chrome & Firefox)",
+    "issuetype": "Bug",
+    "description": "Browser: Chrome Scenario #3: 1. As a user, open the link to join a video meeting 2. Go to the settings and change the audio and video source Scenario #2: 1. As a user, open the link to join a video meeting 2. Join the meeting 3. Go to the settings and change the audio and video source Expected Result: - All the video and audio setting should be listed and available to use Atual Result: - Joining a video meeting or just inside a video meeting, using Chrome, I’m not able to change my sources of audio and video. All appears empty. In other browsers: Safari | Firefox Correct :check_mark: | Only shows speakers :cross_mark:",
+    "action_scope": "Bug",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "COMAPI",
+    "key": "COMAPI-1331",
+    "summary": "[Messaging API] Cap conversations limit fetch to 100",
+    "issuetype": "Task",
+    "description": "Currently, when the backend receives a request for more than 100 conversations, ScyllaDB throws an error. While the controller currently rejects requests with a limit higher than 300, this threshold is too high. We want to introduce a cap at 100 conversations: - If a request asks for >100 conversations, the backend should automatically cap it to 100 instead of throwing an error or rejecting. - This ensures backward compatibility, since we don’t want to set the limit constraint on the endpoint directly (to avoid breaking legacy clients). ### Acceptance Criteria - Any request with limit > 100 is automatically reduced to 100. - Requests with limit <= 100 continue to behave normally. - Requests with no limit parameter keep the current default behavior. - ScyllaDB query should never try fetching more than 100 conversations. ### Technical Notes - Implement logic in the controller/service layer to cap limit at 100 before making the DB call. - Do not return an error for limits over 100, apply the cap silently. - Update logging to indicate when capping is applied (optional debug logging). ### Testing Considerations - Fetch with limit = 50 → returns up to 50. - Fetch with limit = 100 → returns up to 100. - Fetch with limit = 200 → returns up to 100 (no error). - Fetch with limit = 1000 → returns up to 100 (no error). - Confirm no Scylla errors are thrown at high request limits. Request example: https://app.broadvoice.com/api/messaging/conversations?sortField=LastMessage&Include=LastMessage&IncludeRemoved=true&Limit=120&ShowCallMessagesInChat=true Error log in prod https://o11y.broadvoice.io/goto/c4jxGW3Hg?orgId=1 Note: The error is not reproducible in labs due to different scylladb restrictions.",
+    "action_scope": "",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-2053",
+    "summary": "Internal Contact Details Not Updating on Mobile",
+    "issuetype": "Bug",
+    "description": "When a contact is edited via the portal (e.g. updating the name), the changes are not reflected in the contact details view on mobile, even though the contacts list shows the updated name correctly. ### 🔁 Steps to Reproduce: 1. Go to the portal and edit a contact (e.g. change name from \"Rita Nunes Testt\" to \"Rita Nunes Teste\"). Edit the job title and role QAa, QAa to TA, TA 2. Open the mobile app. 3. Navigate to the Contacts list – the updated name is correctly displayed. 4. Tap the contact to view Contact Details. ### ✅ Expected Result: The updated contact information (e.g. \"Rita Nunes Teste\") should be shown both in the contact list and in the details view. ### ❌ Actual Result: - The Contacts list shows the updated name: ✅ \"Rita Nunes Teste\" and new job and role(TA, TA). - The Contact Details view still shows the old name: ❌ \"Rita Nunes Testt\" and old job and role (QAa, QAa). Video: https://broadvoice-my.sharepoint.com/:v:/p/mrocha/EcUxd5Q_K51Pq9BqQQs52zwBYKeY1gtufgV6kWFs7q-m4A?e=ncNd2T",
+    "action_scope": "",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-2790",
+    "summary": "Updated contact name not reflected in message info panel",
+    "issuetype": "Bug",
+    "description": "Steps to Reproduce: 1. Create a new personal contact named Anizio Bandarra. 2. Interact with the contact by sending a few messages. 3. Update the contact’s name to Nell Bandarra. 4. Go to the Messages tab and click the info button (see Image 1). 5. Refresh the page. (see Image 2). Expected Result: - The updated name (Nell Bandarra) should be consistently shown across the app, including in the conversation list and the info sidebar in the Messages tab. Actual Result: - After updating the name, the info sidebar in the Messages tab still shows the old name or behaves as if there is no contact linked to that number. - After refreshing, the conversation list correctly displays Nell Bandarra, but the info sidebar still doesn’t show the updated contact information. Image 1 Image 2",
+    "action_scope": "",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "CUU2",
+    "key": "CUU2-3048",
+    "summary": "Message input unblocks for adhoc groups, allowing SMS without 10DLC campaign registration",
+    "issuetype": "Bug",
+    "description": "## Preconditions - User A has an inbound number but is not registered to any 10DLC campaign. - External Contact #1 and External Contact #2 are valid SMS-capable recipients (A2P). ## Steps to Reproduce 1. Log in as User A (no campaign registrations). 2. In the global search, find and open a conversation with External Contact #1. - Observed: Message input is blocked (✅ correct). 3. In the search bar, look up and add External Contact #2 to the same conversation (multi-recipient). 4. Observe the state of the message input. ## Expected Behavior - The message input remains blocked while any selected recipient is an external SMS contact and the sender (User A) lacks a registered & approved 10DLC campaign. - This gating must persist regardless of the number of recipients added. ## Actual Behavior - After adding External Contact #2, the message input becomes unblocked. - User A can send messages; delivery attempts occur and at least one SMS is delivered to an external recipient (another fails). CUU2-3048.mp4",
+    "action_scope": "Bug",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "BIMA2",
+    "key": "BIMA2-1301",
+    "summary": "Audio button incorrectly pre-selected on call initiation",
+    "issuetype": "Bug",
+    "description": "Steps to reproduce: 1. Initiate a call to any contact. 2. Observe the call screen Expected result: The Audio button should not appear pre-selected. It should only switch to that state when tapped. Actual result: The Audio button appears pre-selected and then becomes deselected, creating a flicker effect. BIMA2-1301.MP4",
+    "action_scope": "Bug",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-1913",
+    "summary": "Created contacts do not immediately display the Name on incoming calls",
+    "issuetype": "Bug",
+    "description": "Pre-conditions: - User is logged into communicator - User created 2 organization users with the same contact: - user bama 1 - user bama 2 Steps: - Receive an incoming call from user bama 1 Obtained outputs - Incoming call screen displays phone number instead of Contact Name Expected outputs: - Incoming call screen displays Contact Name Notes: A delay may exist for the API to obtain a match, if user kill opens the app after a minutes the contact name is displayed (I made with log out log in)",
+    "action_scope": "Bug",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "BIMA2",
+    "key": "BIMA2-1319",
+    "summary": "System messages unarchive group conversations",
+    "issuetype": "Bug",
+    "description": "System messages are causing group conversations to be unarchived. For example, when the conversation is archived and a user is added or removed from the group by another user who still has the conversation active, the group conversation reopens for users who have already archived the conversation. Steps to Reproduce: 1. Create a group with User1, User2, and User3 called “Group1”. 2. User1 archives the group “Group1”. 3. User2 adds a user to the group “Group1” (or removes a member). Expected Result: 1. System messages, such as adding or removing a user or starting a video call, should not unarchive conversations for users who have archived them. 2. Do not show notifications for actions that do not unarchive the conversation, such as adding or removing users from the group. Actual Result: System messages are unarchiving the group conversations when a user is added or removed.",
+    "action_scope": "Bug",
+    "release_notes": "TBD"
+  },
+  {
+    "project": "BAMA",
+    "key": "BAMA-1972",
+    "summary": "Flickering on user caller ID",
+    "issuetype": "Bug",
+    "description": "A flicker appears on the user's caller ID after receiving a call on Android. Important note: This happened after a first installation of the app. The call began to be received while on the onboarding screen and was accepted as soon as the onboarding was finished. It could probably be related to the fact that permission to access contacts was only given after the call had already arrived. Other notes: It happened making an inbound call from user01 on krompir to user08 (answered on android) Steps to Reproduce: 1. Install the app on Android 2. Receive a call during the onboarding 3. As soon as you finished the onboarding accept the call Expected Result User's caller ID has no anomalies of any kind. Actual Result A flicker appears on the user's caller ID after receiving and accepting a call on Android.",
+    "action_scope": "Bug",
+    "release_notes": "TBD"
+  }
+]

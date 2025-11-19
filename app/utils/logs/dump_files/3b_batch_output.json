@@ -1,0 +1,167 @@
+{
+  "input": [
+    {
+      "project": "BAMA",
+      "fix_version": "25.20",
+      "key": "BAMA-1913",
+      "type": "Bug",
+      "title": "Created contacts do not immediately display the Name on incoming calls",
+      "text": "TBD",
+      "action_scope": "Bug"
+    },
+    {
+      "project": "BAMA",
+      "fix_version": "25.20",
+      "key": "BAMA-1972",
+      "type": "Bug",
+      "title": "Flickering on user caller ID",
+      "text": "TBD",
+      "action_scope": "Bug"
+    },
+    {
+      "project": "BAMA",
+      "fix_version": "25.20",
+      "key": "BAMA-2053",
+      "type": "Bug",
+      "title": "Internal Contact Details Not Updating on Mobile",
+      "text": "TBD",
+      "action_scope": ""
+    },
+    {
+      "project": "BAMA",
+      "fix_version": "25.20",
+      "key": "BAMA-1864",
+      "type": "Story",
+      "title": "Implement reactive internal and external contact update handling",
+      "text": "TBD",
+      "action_scope": "Feature improvement"
+    },
+    {
+      "project": "BAMA",
+      "fix_version": "25.20",
+      "key": "BAMA-2008",
+      "type": "Story",
+      "title": "Display sending status for internal conversations",
+      "text": "TBD",
+      "action_scope": "New feature"
+    },
+    {
+      "project": "BIMA2",
+      "fix_version": "25.20",
+      "key": "BIMA2-1301",
+      "type": "Bug",
+      "title": "Audio button incorrectly pre-selected on call initiation",
+      "text": "TBD",
+      "action_scope": "Bug"
+    },
+    {
+      "project": "BIMA2",
+      "fix_version": "25.20",
+      "key": "BIMA2-1319",
+      "type": "Bug",
+      "title": "System messages unarchive group conversations",
+      "text": "TBD",
+      "action_scope": "Bug"
+    },
+    {
+      "project": "COMAPI",
+      "fix_version": "25.20",
+      "key": "COMAPI-1331",
+      "type": "Task",
+      "title": "[Messaging API] Cap conversations limit fetch to 100",
+      "text": "TBD",
+      "action_scope": ""
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-2790",
+      "type": "Bug",
+      "title": "Updated contact name not reflected in message info panel",
+      "text": "TBD",
+      "action_scope": ""
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-3048",
+      "type": "Bug",
+      "title": "Message input unblocks for adhoc groups, allowing SMS without 10DLC campaign registration",
+      "text": "TBD",
+      "action_scope": "Bug"
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-3057",
+      "type": "Bug",
+      "title": "Audio and video Source/Device are not displayed correctly (Chrome & Firefox)",
+      "text": "TBD",
+      "action_scope": "Bug"
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-2961",
+      "type": "Story",
+      "title": "Implement optimistic message sending with status display in internal chats",
+      "text": "TBD",
+      "action_scope": "New feature"
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-2965",
+      "type": "Story",
+      "title": "Empty state for new chats via search bar",
+      "text": "TBD",
+      "action_scope": "Feature improvement"
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-2977",
+      "type": "Story",
+      "title": "Contact Duplicates 2nd Phase",
+      "text": "TBD",
+      "action_scope": "Feature improvement"
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-3020",
+      "type": "Story",
+      "title": "Adjust incoming call notification when the user is on a call",
+      "text": "TBD",
+      "action_scope": "Feature improvement"
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-3033",
+      "type": "Story",
+      "title": "[Video] Implement Noise Cancellation (Krisp)",
+      "text": "TBD",
+      "action_scope": "New feature"
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-3045",
+      "type": "Task",
+      "title": "[Video] Bugsnag integration",
+      "text": "TBD",
+      "action_scope": ""
+    },
+    {
+      "project": "CUU2",
+      "fix_version": "25.20",
+      "key": "CUU2-3047",
+      "type": "Task",
+      "title": "Limit Conversation Polling to 30",
+      "text": "TBD",
+      "action_scope": ""
+    }
+  ],
+  "output": "[\n  {\n    \"project\": \"BAMA\",\n    \"key\": \"BAMA-1913\",\n    \"type\": \"Bug\",\n    \"title\": \"Created contacts do not immediately display the Name on incoming calls\",\n    \"blurb\": \"The contact display now updates instantly on incoming calls, ensuring users see caller information without delay.\",\n    \"action_scope\": \"Bug\"\n  },\n  {\n    \"project\": \"BAMA\",\n    \"key\": \"BAMA-1972\",\n    \"type\": \"Bug\",\n    \"title\": \"Flickering on user caller ID\",\n    \"blurb\": \"The caller ID flickering issue has been resolved, providing a clearer and more stable caller identification experience.\",\n    \"action_scope\": \"Bug\"\n  },\n  {\n    \"project\": \"BAMA\",\n    \"key\": \"BAMA-2053\",\n    \"type\": \"Bug\",\n    \"title\": \"Internal Contact Details Not Updating on Mobile\",\n    \"blurb\": \"Internal contact details now update correctly on mobile devices, ensuring users always see the latest contact information.\",\n    \"action_scope\": \"\"\n  },\n  {\n    \"project\": \"BAMA\",\n    \"key\": \"BAMA-1864\",\n    \"type\": \"Story\",\n    \"title\": \"Implement reactive internal and external contact update handling\",\n    \"blurb\": \"The contact update system now reacts instantly to changes, keeping contact information current across the platform.\",\n    \"action_scope\": \"Feature improvement\"\n  },\n  {\n    \"project\": \"BAMA\",\n    \"key\": \"BAMA-2008\",\n    \"type\": \"Story\",\n    \"title\": \"Display sending status for internal conversations\",\n    \"blurb\": \"Users can now see real-time sending status in internal chats, enhancing communication transparency.\",\n    \"action_scope\": \"New feature\"\n  },\n  {\n    \"project\": \"BIMA2\",\n    \"key\": \"BIMA2-1301\",\n    \"type\": \"Bug\",\n    \"title\": \"Audio button incorrectly pre-selected on call initiation\",\n    \"blurb\": \"The audio button now defaults correctly during call start, preventing user confusion and streamlining call setup.\",\n    \"action_scope\": \"Bug\"\n  },\n  {\n    \"project\": \"BIMA2\",\n    \"key\": \"BIMA2-1319\",\n    \"type\": \"Bug\",\n    \"title\": \"System messages unarchive group conversations\",\n    \"blurb\": \"Group conversations now unarchive properly when system messages are received, improving message management.\",\n    \"action_scope\": \"Bug\"\n  },\n  {\n    \"project\": \"COMAPI\",\n    \"key\": \"COMAPI-1331\",\n    \"type\": \"Task\",\n    \"title\": \"[Messaging API] Cap conversations limit fetch to 100\",\n    \"blurb\": \"The messaging API now limits conversation fetches to 100, optimizing performance and data handling.\",\n    \"action_scope\": \"\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-2790\",\n    \"type\": \"Bug\",\n    \"title\": \"Updated contact name not reflected in message info panel\",\n    \"blurb\": \"Updated contact names now appear correctly in message info panels, ensuring accurate communication details.\",\n    \"action_scope\": \"\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-3048\",\n    \"type\": \"Bug\",\n    \"title\": \"Message input unblocks for adhoc groups, allowing SMS without 10DLC campaign registration\",\n    \"blurb\": \"Message input is now unblocked for ad hoc groups, enabling SMS sending without requiring 10DLC campaign registration.\",\n    \"action_scope\": \"Bug\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-3057\",\n    \"type\": \"Bug\",\n    \"title\": \"Audio and video Source/Device are not displayed correctly (Chrome & Firefox)\",\n    \"blurb\": \"Audio and video source and device displays are now accurate across Chrome and Firefox browsers, improving media setup.\",\n    \"action_scope\": \"Bug\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-2961\",\n    \"type\": \"Story\",\n    \"title\": \"Implement optimistic message sending with status display in internal chats\",\n    \"blurb\": \"Messages now send optimistically with real-time status updates, enhancing chat responsiveness and user confidence.\",\n    \"action_scope\": \"New feature\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-2965\",\n    \"type\": \"Story\",\n    \"title\": \"Empty state for new chats via search bar\",\n    \"blurb\": \"An empty state view now appears for new chats initiated through search, guiding users smoothly into conversations.\",\n    \"action_scope\": \"Feature improvement\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-2977\",\n    \"type\": \"Story\",\n    \"title\": \"Contact Duplicates 2nd Phase\",\n    \"blurb\": \"Duplicate contact management has been enhanced, reducing clutter and improving contact accuracy.\",\n    \"action_scope\": \"Feature improvement\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-3020\",\n    \"type\": \"Story\",\n    \"title\": \"Adjust incoming call notification when the user is on a call\",\n    \"blurb\": \"Incoming call notifications are now better adjusted when users are already on a call, minimizing disruptions.\",\n    \"action_scope\": \"Feature improvement\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-3033\",\n    \"type\": \"Story\",\n    \"title\": \"[Video] Implement Noise Cancellation (Krisp)\",\n    \"blurb\": \"Noise cancellation using Krisp is now integrated into video calls, improving audio clarity for users.\",\n    \"action_scope\": \"New feature\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-3045\",\n    \"type\": \"Task\",\n    \"title\": \"[Video] Bugsnag integration\",\n    \"blurb\": \"Bugsnag error monitoring has been integrated into video features, enabling proactive issue detection and resolution.\",\n    \"action_scope\": \"\"\n  },\n  {\n    \"project\": \"CUU2\",\n    \"key\": \"CUU2-3047\",\n    \"type\": \"Task\",\n    \"title\": \"Limit Conversation Polling to 30\",\n    \"blurb\": \"Conversation polling frequency has been limited to 30 seconds, balancing real-time updates with system performance.\",\n    \"action_scope\": \"\"\n  }\n]"
+}

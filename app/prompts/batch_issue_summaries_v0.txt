@@ -1,0 +1,26 @@
+You are summarizing multiple Jira issues in one pass.
+
+Issues JSON (array):
+{issues_json}
+
+Instructions:
+- For each issue, write a concise, user-facing summary (1-3 sentences, ~40-80 words).
+- Audience: product stakeholders and end users (avoid internal jargon).
+- Include: what changed, why it matters, any user impact.
+- Exclude: internal-only details.
+- Keep the output strictly in JSON.
+
+Output JSON schema (array):
+[
+  {
+    "project": "ABC",
+    "key": "ABC-123",
+    "type": "Bug|Story|Task|...",
+    "title": "Original issue summary",
+    "blurb": "Concise human-friendly summary."
+  }
+]
+
+Return ONLY valid JSON matching the schema above. Do not add comments or prose.
+
+

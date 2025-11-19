@@ -1,0 +1,29 @@
+You are summarizing multiple Jira issues in one pass.
+
+Issues JSON (array):
+{issues_json}
+
+Instructions:
+- For each issue, write one natural sentence in a problem + solution format (without labeling “Problem:” or “Solution:”), ~30–60 words.
+- Keep a light marketing slant: celebrate outcomes and user benefit; avoid hype, emojis, or vague superlatives.
+- Audience: product stakeholders and end users (avoid internal jargon).
+- Include: what changed (solution), why it matters (impact/benefit), and any user-facing effect.
+- Exclude: internal-only details (team names, implementation specifics, file paths, environments).
+- Style: active voice, positive framing; refer to the product/feature directly; expand uncommon acronyms on first mention.
+- The `blurb` must be a single sentence ending with a period.
+- Keep the output strictly in JSON.
+
+Output JSON schema (array):
+[
+  {
+    "project": "ABC",
+    "key": "ABC-123",
+    "type": "Bug|Story|Task|...",
+    "title": "Original issue summary",
+    "blurb": "Concise human-friendly summary."
+  }
+]
+
+Return ONLY valid JSON matching the schema above. Do not add comments or prose.
+
+

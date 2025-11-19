@@ -1,0 +1,30 @@
+You are creating the final Markdown release notes from summarized issues.
+
+Sections JSON:
+{sections_json}
+
+Instructions:
+- Compose a clean Markdown document.
+- Header: add a top-level title like "Release Notes". If a version/date is present in the data, include it.
+- After the header, add a single line with today's date in the format "{today}".
+- Immediately after the date, insert the following Introduction section verbatim (do not alter its content or spacing):
+-
+{introduction_section}
+-
+- Sectioning: Render the following sections in this exact order and with these exact names, including only non-empty sections:
+  1) New features
+  2) Enhancements
+  3) Bug fixes
+  4) Internals
+  For each section, render a second-level heading (## {Section}).
+- Items (no bullets): For each item, output two lines with a blank line after each item:
+  1) "[{key}] **{title}**"
+  2) "      {blurb}" (start with at least 6 spaces to visually indent)
+- Links: when a key looks like ABC-123, leave it as plain text (linking will be injected later).
+- Include only sections with at least one item.
+- Tone: professional, concise, user-focused.
+
+Output:
+Return only the Markdown body. No additional commentary.
+
+
