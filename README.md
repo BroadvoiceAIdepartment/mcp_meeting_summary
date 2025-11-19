@@ -1,1 +1,1 @@
-# map_meeting_summary
+# mcp_meeting_summary
